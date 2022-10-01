@@ -5,12 +5,12 @@ type Person = {
 type Person2 = Person & {
   age: number;
 };
-const person1: Person2 = { firstName: "mohaned", lastName: "ashraf", age: 25 };
+const person1: Person2 = { firstName: 'mohaned', lastName: 'ashraf', age: 25 };
 
 if (person1.age === 21) {
-  console.log("s");
+  console.log('s');
 }
 
-const mohaned = "mohaned";
+const mohaned = 'mohaned';
 
-console.log(person1);
+console.log(mohaned);
