@@ -1,0 +1,2 @@
+let firstName = "mohaned";
+export {};

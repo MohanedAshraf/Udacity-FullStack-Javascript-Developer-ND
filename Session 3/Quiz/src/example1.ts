@@ -1,0 +1,2 @@
+const firstName = "mohaned";
+export {};
