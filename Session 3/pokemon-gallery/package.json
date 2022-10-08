@@ -6,10 +6,12 @@
   "scripts": {
     "test": "npm run build && npm run jasmine",
     "build": "npx tsc",
-    "start": "ts-node src/.",
+    "dev": "ts-node src/.",
+    "start": "node build/index.js",
     "lint": "eslint src/*.ts",
     "lint:f": "eslint src/*.ts --fix",
-    "jasmine": "jasmine"
+    "jasmine": "jasmine",
+    "prettier": "prettier --config .prettierrc  src/**/*.ts  --write"
   },
   "author": "",
   "license": "ISC",
