@@ -12,7 +12,7 @@ We have also put our SQL knowledge into practice, by creating a simple database.
 
 - [What is PostgreSQL?](https://en.wikipedia.org/wiki/PostgreSQL)
 - [SQL syntax](https://www.w3schools.com/sql/)
-- [Psql metas](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
+- [Psql metas](https://dataschool.com/learn-sql/meta-commands-in-psql/)
 - [PostgreSQL Clients](https://wiki.postgresql.org/wiki/PostgreSQL_Clients)
 
 ## ✍️ Quiz
