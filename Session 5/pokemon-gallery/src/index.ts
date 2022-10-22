@@ -1,10 +1,15 @@
 import express from 'express';
+import client from './database';
 
 const app = express();
 const port = 3000;
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
+app.get('/', async (req, res) => {
+  const conn = await client.connect();
+  const query = 'SELECT * FROM pokemons';
+  const { rows } = await conn.query(query);
+  conn.release();
+  res.send(rows);
 });
 
 app.listen(port, () => {
