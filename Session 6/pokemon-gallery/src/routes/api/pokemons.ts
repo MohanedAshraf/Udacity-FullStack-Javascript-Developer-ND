@@ -1,8 +1,9 @@
 import { Router } from 'express';
-import { index } from '../../controllers/pokemons';
+import { index , show } from '../../controllers/pokemons';
 
 const route = Router();
 
 route.get('/', index);
+route.get('/:id', show);
 
 export default route;

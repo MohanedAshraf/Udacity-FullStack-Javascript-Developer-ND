@@ -1,8 +1,10 @@
 import client from '../database';
 
 export type Pokemon = {
-  id: string;
+  id?: number;
   name: string;
+  type: string;
+  imageUrn: string;
 };
 
 export class PokemonModel {
@@ -21,7 +23,7 @@ export class PokemonModel {
     }
   }
 
-  async show(id: string): Promise<Pokemon> {
+  async show(id: number): Promise<Pokemon> {
     try {
       const sql = 'SELECT * FROM pokemons WHERE id=($1)';
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
