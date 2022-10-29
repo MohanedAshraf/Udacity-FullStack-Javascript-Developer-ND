@@ -1,0 +1,1 @@
+ALTER TABLE contact_info DROP COLUMN user_id;

@@ -1,0 +1,1 @@
+ALTER TABLE contact_info ADD COLUMN user_id  bigint UNIQUE REFERENCES users(id);
