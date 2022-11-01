@@ -120,15 +120,16 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/contactinfo/1",
+							"raw": "localhost:3000/api/users/contactinfo/2",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
+								"users",
 								"contactinfo",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -149,13 +150,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/contactinfo",
+							"raw": "localhost:3000/api/users/contactinfo",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
+								"users",
 								"contactinfo"
 							]
 						}
@@ -177,13 +179,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/contactinfo/1",
+							"raw": "localhost:3000/api/users/contactinfo/1",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
+								"users",
 								"contactinfo",
 								"1"
 							]
@@ -197,15 +200,16 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/contactinfo/7",
+							"raw": "localhost:3000/api/users/contactinfo/5",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
+								"users",
 								"contactinfo",
-								"7"
+								"5"
 							]
 						}
 					},
@@ -288,7 +292,7 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "Add Pokemon",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -311,7 +315,7 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "Delete Pokemon",
 					"request": {
 						"method": "DELETE",
 						"header": [],
