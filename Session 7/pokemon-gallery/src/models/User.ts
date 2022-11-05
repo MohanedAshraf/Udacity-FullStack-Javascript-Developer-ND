@@ -1,4 +1,5 @@
 import client from '../database';
+import bcrypt from 'bcrypt';
 
 export type User = {
   id?: string;
@@ -8,6 +9,8 @@ export type User = {
   password: string;
 };
 
+const { PEPPER } = process.env;
+
 export class UserModel {
   async create(user: User): Promise<User> {
     try {
@@ -15,11 +18,14 @@ export class UserModel {
       const sql =
         'INSERT INTO users (username, firstname, lastname, password ) VALUES($1, $2, $3 ,$4 ) RETURNING *';
       // Here we will hash the password
+      const hashedPassword = bcrypt.hashSync(user.password + PEPPER, 12);
+      console.log('HASHED', hashedPassword);
+
       const result = await connection.query(sql, [
         user.username,
         user.firstname,
         user.lastname,
-        user.password,
+        hashedPassword,
       ]);
       connection.release();
       return result.rows[0];
@@ -38,8 +44,9 @@ export class UserModel {
       const user = result.rows[0];
 
       if (user) {
-        // we will check if the input password is the same as the hashed
-        return user;
+        if (bcrypt.compareSync(password + PEPPER, user.password)) {
+          return user;
+        }
       }
       return null;
     } catch (error) {
