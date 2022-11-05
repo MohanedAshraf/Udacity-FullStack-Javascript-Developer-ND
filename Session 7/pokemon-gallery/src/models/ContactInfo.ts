@@ -28,14 +28,14 @@ export class ContactInfoModel {
     }
   }
 
-  async show(id: number): Promise<ContactInfoType> {
+  async show(user_id: number): Promise<ContactInfoType> {
     try {
-      const sql = 'SELECT * FROM contact_info WHERE id=($1)';
+      const sql = 'SELECT * FROM contact_info WHERE user_id=($1)';
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       const conn = await client.connect();
 
-      const result = await conn.query(sql, [id]);
+      const result = await conn.query(sql, [user_id]);
 
       conn.release();
 
@@ -49,9 +49,9 @@ export class ContactInfoModel {
     try {
       const conn = await client.connect();
       const sql =
-        'UPDATE contact_info SET phoneNumber=($2), address=($3) WHERE id=($1) RETURNING *';
+        'UPDATE contact_info SET phoneNumber=($2), address=($3) WHERE user_id=($1) RETURNING *';
       const result = await conn.query(sql, [
-        contact_info.id,
+        contact_info.user_id,
         contact_info.phoneNumber,
         contact_info.address,
       ]);
@@ -62,15 +62,17 @@ export class ContactInfoModel {
     }
   }
 
-  async delete(id: number): Promise<ContactInfoType> {
+  async delete(user_id: number): Promise<ContactInfoType> {
     try {
       const conn = await client.connect();
-      const sql = 'DELETE FROM contact_info WHERE id=($1) RETURNING *';
-      const result = await conn.query(sql, [id]);
+      const sql = 'DELETE FROM contact_info WHERE user_id=($1) RETURNING *';
+      const result = await conn.query(sql, [user_id]);
       conn.release();
       return result.rows[0];
     } catch (error) {
-      throw new Error(`Could not delete ContactInfo ${id}, ${error}`);
+      throw new Error(
+        `Could not delete ContactInfo for user ${user_id}, ${error}`
+      );
     }
   }
 }

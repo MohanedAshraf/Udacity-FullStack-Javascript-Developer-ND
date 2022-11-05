@@ -10,7 +10,7 @@ import { auth } from '../../middleware/auth';
 const route = Router();
 
 route.post('/', auth, create);
-route.get('/:id', show);
-route.put('/:id', update);
-route.delete('/:id', deleteContactInfo);
+route.get('/', auth, show);
+route.put('/', auth, update);
+route.delete('/', auth, deleteContactInfo);
 export default route;

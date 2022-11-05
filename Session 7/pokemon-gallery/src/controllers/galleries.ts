@@ -5,7 +5,8 @@ const Gallery = new GalleryModel();
 
 export const index = async (req: Request, res: Response) => {
   try {
-    const galleries = await Gallery.index();
+    const user_id = (req as any).userId;
+    const galleries = await Gallery.index(user_id);
     res.send(galleries);
   } catch (error) {
     res.status(401).json(error);
@@ -15,13 +16,14 @@ export const index = async (req: Request, res: Response) => {
 export const show = async (req: Request, res: Response) => {
   try {
     const id = Number(req.params.id);
+    const user_id = (req as any).userId;
     if (!id) {
       return res
         .status(400)
         .send('Error, missing or malformed parameters. id required');
     }
-    const pokemon = await Gallery.show(id);
-    res.send(pokemon);
+    const gallery = await Gallery.show(id, user_id);
+    res.send(gallery);
   } catch (error) {
     res.status(401).json(error);
   }
@@ -29,12 +31,13 @@ export const show = async (req: Request, res: Response) => {
 
 export const create = async (req: Request, res: Response) => {
   try {
-    const { user_id, name, imageUrn } = req.body;
-    if (!user_id || !name || !imageUrn) {
+    const { name, imageUrn } = req.body;
+    const user_id = (req as any).userId;
+    if (!name || !imageUrn) {
       return res
         .status(400)
         .send(
-          'Error, missing or malformed parameters. (user_id , name , imageUrn) are  required'
+          'Error, missing or malformed parameters. (name , imageUrn) are  required'
         );
     }
     const gallery = { user_id, name, imageUrn };
@@ -48,14 +51,15 @@ export const create = async (req: Request, res: Response) => {
 export const deleteGallery = async (req: Request, res: Response) => {
   try {
     const id = Number(req.params.id);
+    const user_id = (req as any).userId;
     if (!id) {
       return res
         .status(400)
         .send('Error, missing or malformed parameters. id required');
     }
 
-    const deleted = await Gallery.delete(id);
-    res.send(deleted);
+    const deleted = await Gallery.delete(id, user_id);
+    res.send(`Gallery with id ${deleted.id} Deleted`);
   } catch (error) {
     res.status(401).json(error);
   }
@@ -65,6 +69,7 @@ export const addPokemon = async (req: Request, res: Response) => {
   try {
     const id = Number(req.params.id);
     const pokemon_id = Number(req.params.pokemon_id);
+    const user_id = (req as any).userId;
 
     if (!id || !pokemon_id) {
       return res
@@ -72,6 +77,12 @@ export const addPokemon = async (req: Request, res: Response) => {
         .send(
           'Error, missing or malformed parameters. (id , pokemon_id) are  required'
         );
+    }
+    const gallery = await Gallery.show(id, user_id);
+    if (!gallery) {
+      return res
+        .status(400)
+        .send('Error, user does not have access to this gallery');
     }
     const addPokemon = await Gallery.addPokemon(id, pokemon_id);
     res.send(addPokemon);
@@ -84,6 +95,7 @@ export const removePokemon = async (req: Request, res: Response) => {
   try {
     const id = Number(req.params.id);
     const pokemon_id = Number(req.params.pokemon_id);
+    const user_id = (req as any).userId;
 
     if (!id || !pokemon_id) {
       return res
@@ -92,8 +104,14 @@ export const removePokemon = async (req: Request, res: Response) => {
           'Error, missing or malformed parameters. (id , pokemon_id) are  required'
         );
     }
-    const addPokemon = await Gallery.removePokemon(id, pokemon_id);
-    res.send(addPokemon);
+    const gallery = await Gallery.show(id, user_id);
+    if (!gallery) {
+      return res
+        .status(400)
+        .send('Error, user does not have access to this gallery');
+    }
+    await Gallery.removePokemon(id, pokemon_id);
+    res.send(`Pokemon ${pokemon_id} inside Gallery ${id}  Deleted`);
   } catch (error) {
     res.status(401).json(error);
   }

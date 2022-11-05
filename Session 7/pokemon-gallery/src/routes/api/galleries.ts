@@ -7,13 +7,14 @@ import {
   addPokemon,
   removePokemon,
 } from '../../controllers/galleries';
+import { auth } from '../../middleware/auth';
 
 const route = Router();
 
-route.get('/', index);
-route.get('/:id', show);
-route.post('/', create);
-route.delete('/:id', deleteGallery);
-route.post('/:id/pokemons/:pokemon_id', addPokemon);
-route.delete('/:id/pokemons/:pokemon_id', removePokemon);
+route.get('/', auth, index);
+route.get('/:id', auth, show);
+route.post('/', auth, create);
+route.delete('/:id', auth, deleteGallery);
+route.post('/:id/pokemons/:pokemon_id', auth, addPokemon);
+route.delete('/:id/pokemons/:pokemon_id', auth, removePokemon);
 export default route;

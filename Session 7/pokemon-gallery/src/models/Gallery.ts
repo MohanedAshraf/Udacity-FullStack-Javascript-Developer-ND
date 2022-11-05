@@ -8,13 +8,13 @@ export type Gallery = {
 };
 
 export class GalleryModel {
-  async index(): Promise<Gallery[]> {
+  async index(user_id: number): Promise<Gallery[]> {
     try {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       const conn = await client.connect();
-      const sql = 'SELECT * FROM galleries';
-      const result = await conn.query(sql);
+      const sql = 'SELECT * FROM galleries WHERE user_id=($1)';
+      const result = await conn.query(sql, [user_id]);
       conn.release();
 
       return result.rows;
@@ -23,14 +23,14 @@ export class GalleryModel {
     }
   }
 
-  async show(id: number): Promise<Gallery> {
+  async show(id: number, user_id: number): Promise<Gallery> {
     try {
-      const sql = 'SELECT * FROM galleries WHERE id=($1)';
+      const sql = 'SELECT * FROM galleries WHERE id=($1) AND user_id=($2)';
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       const conn = await client.connect();
 
-      const result = await conn.query(sql, [id]);
+      const result = await conn.query(sql, [id, user_id]);
 
       conn.release();
 
@@ -59,11 +59,17 @@ export class GalleryModel {
     }
   }
 
-  async delete(id: number): Promise<Gallery> {
+  async delete(id: number, user_id: number): Promise<Gallery> {
     try {
       const conn = await client.connect();
-      const sql = 'DELETE FROM galleries WHERE id=($1) RETURNING *';
-      const result = await conn.query(sql, [id]);
+
+      const sql = 'DELETE FROM pokemons_galleries WHERE gallery_id=($1)';
+      await conn.query(sql, [id]);
+
+      const sql2 =
+        'DELETE FROM galleries WHERE id=($1) AND user_id=($2) RETURNING *';
+      const result = await conn.query(sql2, [id, user_id]);
+
       conn.release();
       return result.rows[0];
     } catch (error) {
