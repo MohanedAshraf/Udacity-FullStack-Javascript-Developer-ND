@@ -5,10 +5,11 @@ import {
   update,
   deleteContactInfo,
 } from '../../controllers/contactInfo';
+import { auth } from '../../middleware/auth';
 
 const route = Router();
 
-route.post('/', create);
+route.post('/', auth, create);
 route.get('/:id', show);
 route.put('/:id', update);
 route.delete('/:id', deleteContactInfo);

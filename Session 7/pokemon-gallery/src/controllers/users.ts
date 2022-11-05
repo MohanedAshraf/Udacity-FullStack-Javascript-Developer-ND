@@ -1,7 +1,10 @@
 import { Request, Response } from 'express';
 import { UserModel, User } from '../models/User';
+import jwt from 'jsonwebtoken';
 
 const User = new UserModel();
+
+const TOKEN_SECRET = process.env.TOKEN_SECRET as string;
 
 export const create = async (req: Request, res: Response) => {
   try {
@@ -17,8 +20,11 @@ export const create = async (req: Request, res: Response) => {
     const user: User = { username, firstname, lastname, password };
 
     const createduser = await User.create(user);
-    // we should return a token here
-    res.json(createduser);
+    const token = jwt.sign(
+      { user: { id: createduser.id, username: createduser.username } },
+      TOKEN_SECRET
+    );
+    res.json(token);
   } catch (error) {
     res.status(500).json('Failed to create user');
   }
@@ -40,8 +46,11 @@ export const authenticate = async (req: Request, res: Response) => {
       res.status(401);
       res.json('Incorrect user information');
     } else {
-      // we should return a token here
-      res.json(user);
+      const token = jwt.sign(
+        { user: { id: user.id, username: user.username } },
+        TOKEN_SECRET
+      );
+      res.json(token);
     }
   } catch (error) {
     res.status(401).send(error);
