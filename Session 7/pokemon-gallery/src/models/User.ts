@@ -17,9 +17,8 @@ export class UserModel {
       const connection = await client.connect();
       const sql =
         'INSERT INTO users (username, firstname, lastname, password ) VALUES($1, $2, $3 ,$4 ) RETURNING *';
-      // Here we will hash the password
+
       const hashedPassword = bcrypt.hashSync(user.password + PEPPER, 12);
-      console.log('HASHED', hashedPassword);
 
       const result = await connection.query(sql, [
         user.username,

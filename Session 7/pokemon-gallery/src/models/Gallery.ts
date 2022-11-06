@@ -4,7 +4,7 @@ export type Gallery = {
   id?: number;
   user_id: number;
   name: string;
-  imageUrn: string;
+  imageurn: string;
 };
 
 export class GalleryModel {
@@ -43,12 +43,12 @@ export class GalleryModel {
     try {
       const connection = await client.connect();
       const sql =
-        'INSERT INTO galleries (user_id , name , imageUrn ) VALUES($1, $2, $3 ) RETURNING *';
+        'INSERT INTO galleries (user_id , name , imageurn ) VALUES($1, $2, $3 ) RETURNING *';
       // Here we will hash the password
       const result = await connection.query(sql, [
         gallery.user_id,
         gallery.name,
-        gallery.imageUrn,
+        gallery.imageurn,
       ]);
       connection.release();
       return result.rows[0];
@@ -85,6 +85,8 @@ export class GalleryModel {
       conn.release();
       return result.rows[0];
     } catch (error) {
+      console.log(error);
+
       throw new Error(
         `Could not add pokemon ${pokemon_id} to gallery ${id}: ${error}`
       );

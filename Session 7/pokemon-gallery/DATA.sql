@@ -5,21 +5,21 @@ insert into users (username, firstname , lastname , password) values
 ('sayedzz','sayed' , 'Ashraf' ,'$2b$12$KT3csIhTlyisfDCm2dHzwuab5lZf09U/85U63Ip7A3aHTGxyNaDxq'); /* Original password (sayedsayed) */
 
 
- insert into contact_info (user_id, phoneNumber, address) values
+ insert into contact_info (user_id, phonenumber, address) values
 ('1','01145906728' , 'cairo' ),
 ('2','01145931212' , 'mansoura' ),
 ('4','01145932389' , 'giza' ),
 ('3','01145903119' , 'alex' );
 
 
- insert into galleries (user_id, name, imageUrn) values
+ insert into galleries (user_id, name, imageurn) values
 ('1', 'My Special' , '/myspecial' ),
 ('2','My Collection' , '/mycollection' ),
 ('3','The Best' , '/the_best' ),
 ('1','I love them' , '/i_love_them' );
 
 
- insert into pokemons (name, type, imageUrn) values
+ insert into pokemons (name, type, imageurn) values
 ('pikchu', 'electric' , '/electric' ),
 ('snorlex','normal' , '/snorlex' ),
 ('charmander','fire' , '/charmander' ),

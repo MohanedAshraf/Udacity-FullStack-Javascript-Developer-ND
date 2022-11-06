@@ -5,16 +5,16 @@ const ContactInfo = new ContactInfoModel();
 
 export const create = async (req: Request, res: Response) => {
   try {
-    const { phoneNumber, address } = req.body;
+    const { phonenumber, address } = req.body;
     const user_id = (req as any).userId as number;
-    if (!phoneNumber || !address) {
+    if (!phonenumber || !address) {
       return res
         .status(400)
         .send(
           'Error, missing or malformed parameters. (phoneNumber , address) are  required'
         );
     }
-    const contact_info: ContactInfoType = { user_id, phoneNumber, address };
+    const contact_info: ContactInfoType = { user_id, phonenumber, address };
     const contact = await ContactInfo.create(contact_info);
     res.send(contact);
   } catch (error) {

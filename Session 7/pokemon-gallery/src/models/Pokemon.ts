@@ -4,7 +4,7 @@ export type Pokemon = {
   id?: number;
   name: string;
   type: string;
-  imageUrn: string;
+  imageurn: string;
 };
 
 export class PokemonModel {

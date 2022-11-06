@@ -3,7 +3,7 @@ import client from '../database';
 export type ContactInfoType = {
   id?: number;
   user_id: number;
-  phoneNumber: string;
+  phonenumber: string;
   address: string;
 };
 
@@ -12,11 +12,11 @@ export class ContactInfoModel {
     try {
       const connection = await client.connect();
       const sql =
-        'INSERT INTO contact_info (user_id , phoneNumber , address ) VALUES($1, $2, $3 ) RETURNING *';
+        'INSERT INTO contact_info (user_id , phonenumber , address ) VALUES($1, $2, $3 ) RETURNING *';
       // Here we will hash the password
       const result = await connection.query(sql, [
         contact_info.user_id,
-        contact_info.phoneNumber,
+        contact_info.phonenumber,
         contact_info.address,
       ]);
       connection.release();
@@ -49,10 +49,10 @@ export class ContactInfoModel {
     try {
       const conn = await client.connect();
       const sql =
-        'UPDATE contact_info SET phoneNumber=($2), address=($3) WHERE user_id=($1) RETURNING *';
+        'UPDATE contact_info SET phonenumber=($2), address=($3) WHERE user_id=($1) RETURNING *';
       const result = await conn.query(sql, [
         contact_info.user_id,
-        contact_info.phoneNumber,
+        contact_info.phonenumber,
         contact_info.address,
       ]);
       conn.release();

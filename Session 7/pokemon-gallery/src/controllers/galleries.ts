@@ -31,16 +31,16 @@ export const show = async (req: Request, res: Response) => {
 
 export const create = async (req: Request, res: Response) => {
   try {
-    const { name, imageUrn } = req.body;
+    const { name, imageurn } = req.body;
     const user_id = (req as any).userId;
-    if (!name || !imageUrn) {
+    if (!name || !imageurn) {
       return res
         .status(400)
         .send(
-          'Error, missing or malformed parameters. (name , imageUrn) are  required'
+          'Error, missing or malformed parameters. (name , imageurn) are  required'
         );
     }
-    const gallery = { user_id, name, imageUrn };
+    const gallery = { user_id, name, imageurn };
     const createdGallery = await Gallery.create(gallery);
     res.send(createdGallery);
   } catch (error) {
