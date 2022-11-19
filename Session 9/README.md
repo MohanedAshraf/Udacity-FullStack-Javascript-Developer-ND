@@ -13,7 +13,7 @@ In this session, we learned Angular's foundational concepts:
 - Dependency Injection
 - Services.
 
-We started to work on [pokemons_gallery](./pokemons_gallery) frontend app.
+We started to work on [pokemons_gallery](./pokemonsGallery) frontend app.
 
 ## 🔗 Resources
 

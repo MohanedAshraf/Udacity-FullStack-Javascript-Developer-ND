@@ -1,0 +1,64 @@
+.login-container {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #31d2f2 0%, #8fe3f4 100%);
+}
+.logo {
+  font-size: 70px;
+  font-weight: bold;
+  font-family: "Inter", sans-serif;
+  letter-spacing: 10px;
+  text-align: center;
+  color: aliceblue;
+  padding-top: 120px;
+  text-shadow: -1px 0 #31d2f2, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.desc {
+  font-size: 34px;
+  letter-spacing: 5px;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  margin: auto;
+  color: aliceblue;
+  text-shadow: -1px 0 #31d2f2, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.film {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 618px;
+}
+
+.form-group {
+  margin-top: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+.error {
+  position: absolute;
+  top: 32px;
+  right: 0px;
+  color: red;
+}
+
+.btn-container {
+  position: relative;
+}
+.btn {
+  margin-top: 30px;
+}
+.login-form {
+  width: 500px;
+  height: 270px;
+  padding: 20px;
+  background-color: aliceblue;
+  border-radius: 10px;
+  margin: auto;
+  margin-top: 100px;
+  box-shadow: 5px 5px 20px #648390;
+}
