@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
 function App() {
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState("playground");
 
   function changeTitle(e) {
-    setTitle(e.target.value);
+    // setTitle(e.target.value);
   }
 
   return (
