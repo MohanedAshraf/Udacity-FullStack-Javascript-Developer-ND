@@ -9,7 +9,9 @@ In this session, We got an introduction to cloud computing and we answered the f
 - Cloud computing providers
 - Cloud computing types
 - Benefits of the cloud
-  We also learned about AWS and the various services it provides:
+
+We also learned about AWS and the various services it provides:
+
 - IAM
 - RDS
 - EC2
@@ -21,3 +23,4 @@ In this session, We got an introduction to cloud computing and we answered the f
 - [Public Cloud vs Private Cloud vs Hybrid Cloud](https://www.alibabacloud.com/blog/public-cloud-vs-private-cloud-vs-hybrid-cloud-what-is-the-difference_597486)
 
 - [SAAS vs PAAS vs IAAS](https://www.ibm.com/eg-en/cloud/learn/iaas-paas-saas)
+- [What's Software Deployment?](https://www.goodfirms.co/glossary/software-deployment)
