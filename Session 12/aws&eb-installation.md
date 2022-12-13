@@ -15,7 +15,7 @@ if you have multiple profile (you can check by this command `aws configure list-
 ### EB CLI
 
 - Install it with this [Repo](https://github.com/aws/aws-elastic-beanstalk-cli-setup) help.
-  1- Make sure you installed git , python and virtualenv respectively.
-  2- Clone the repo locally.
-  3- Run this command `python .\aws-elastic-beanstalk-cli-setup\scripts\ebcli_installer.py`
+  - Make sure you installed git , python and virtualenv respectively.
+  - Clone the repo locally.
+  - Run this command `python .\aws-elastic-beanstalk-cli-setup\scripts\ebcli_installer.py`
 - Check if it's installed correctly by use this command `eb --version`
