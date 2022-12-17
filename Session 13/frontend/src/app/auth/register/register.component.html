@@ -1,0 +1,57 @@
+<div class="register-container">
+  <div class="logo">Pokemons Gallery</div>
+  <div class="desc">Create your Favourite Gallery</div>
+  <div class="desc">Register</div>
+  <form #form="ngForm" (ngSubmit)="register()" class="register-form">
+    <div class="form-group">
+      <label for="firstname">Firstname</label>
+      <input
+        required
+        minlength="4"
+        type="text"
+        name="firstname"
+        class="form-control"
+        [(ngModel)]="firstname"
+      />
+    </div>
+    <div class="form-group">
+      <label for="lastname">Lastname</label>
+      <input
+        required
+        minlength="4"
+        type="text"
+        name="lastname"
+        class="form-control"
+        [(ngModel)]="lastname"
+      />
+    </div>
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input
+        required
+        minlength="4"
+        type="text"
+        name="username"
+        class="form-control"
+        [(ngModel)]="username"
+      />
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        required
+        minlength="6"
+        type="password"
+        name="password"
+        class="form-control"
+        [(ngModel)]="password"
+      />
+    </div>
+    <div class="btn-container">
+      <div class="error">{{ errorMsg }}</div>
+      <button type="submit" [disabled]="form.invalid" class="btn btn-dark">
+        Register
+      </button>
+    </div>
+  </form>
+</div>

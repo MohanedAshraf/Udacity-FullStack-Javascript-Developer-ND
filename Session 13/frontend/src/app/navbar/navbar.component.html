@@ -1,0 +1,11 @@
+<div class="header-container">
+  <div class="logo">Pokemon Gallery</div>
+  <div *ngIf="user" class="nav-items">
+    <div class="nav-item-1" (click)="gotoUser()">{{ user }}</div>
+    <div class="nav-item-2" (click)="logout()">Logout</div>
+  </div>
+  <div *ngIf="!user" class="nav-items">
+    <div class="nav-item-1" (click)="gotoRegister()">Register</div>
+    <div class="nav-item-1" (click)="gotoLogin()">Login</div>
+  </div>
+</div>
