@@ -1,0 +1,12 @@
+{
+    "scripts": {
+      "front-end:install": "cd frontend && npm install",
+      "front-end:build": "cd frontend && npm run build",
+      "front-end:deploy": "cd frontend && npm run deploy",
+      "back-end:install": "cd pokemon-gallery && npm install",
+      "back-end:build": "cd pokemon-gallery && npm run build",
+      "back-end:deploy": "cd pokemon-gallery && npm run deploy"
+    },
+    "devDependencies": {}
+  }
+  

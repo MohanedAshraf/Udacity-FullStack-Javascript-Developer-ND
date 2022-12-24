@@ -1,0 +1,1 @@
+ALTER TABLE galleries DROP COLUMN user_id;

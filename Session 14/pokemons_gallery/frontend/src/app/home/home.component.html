@@ -1,0 +1,26 @@
+<app-navbar></app-navbar>
+<div class="home-container">
+  <div class="all-galleries">
+    <div>
+      <div class="top">
+        <h5>Your Galleries</h5>
+        <button class="btn btn-info">Add Gallery</button>
+      </div>
+      <div class="gallery-container">
+        <div class="gallery" *ngFor="let gallery of galleries">
+          <div class="cover" (click)="goToGallery(gallery.id)">
+            <img
+              [src]="
+                gallery.imageurn
+                  ? '../../assets/images/galleries' + gallery.imageurn + '.jpg'
+                  : 'https://via.placeholder.com/200'
+              "
+              alt=""
+            />
+          </div>
+          <span class="name">{{ gallery.name }} </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

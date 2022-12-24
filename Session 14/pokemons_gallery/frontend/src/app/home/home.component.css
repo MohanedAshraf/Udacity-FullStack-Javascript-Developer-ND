@@ -1,0 +1,55 @@
+.home-container {
+  display: flex;
+}
+
+.all-galleries {
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  padding: 20px 40px;
+  font-family: "Inter", sans-serif;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.top h5 {
+  text-transform: uppercase;
+  font-weight: bold;
+  border-left: 5px solid #31d2f2;
+  padding-left: 10px;
+}
+.top button {
+  color: aliceblue;
+  font-weight: 600;
+}
+
+.cover {
+  cursor: pointer;
+}
+
+img {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+}
+
+.name {
+  font-weight: 600;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.gallery-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 30px;
+  flex-flow: wrap;
+}
+.gallery {
+  margin: 24px;
+  width: 200px;
+}
